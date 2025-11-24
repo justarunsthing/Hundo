@@ -1,20 +1,22 @@
 :root {
     --primary-color: #1D5888;
-    --secondary-color: #FF993B;
+    --secondary-color: #36827F;
     --dark-color: #292929;
     --white-color: #E7E7E7;
 }
 
-body {
-    color: var(--dark-color);
+.theme-color {
+    background-color: #464d77;
 }
 
-nav {
-    background-color: var(--dark-color);
+.action {
+    background-color: #36827F;
 }
 
-footer {
-    background-color: var(--dark-color);
+.action:hover {
+    background-color: #3b6d80;
+    border: 2px solid #464D77;
+    box-shadow: 0 0 10px rgba(70, 77, 119, 0.4);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,7 +66,7 @@ main>.container {
 }
 
 .checklist >li i{
-    color: var(--secondary-color);
+    color: #464d77;
 }
 
 code[class*="language-"], pre[class*="language-"] {
