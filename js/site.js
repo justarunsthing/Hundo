@@ -22,8 +22,16 @@ function displayValues() {
 function generateNumbers(startValue, endValue) {
     let numbers = [];
 
-    for (let i = startValue; i <= endValue; i++){
-        numbers.push(i);
+    if (startValue <= endValue) {
+        // Count up
+        for (let i = startValue; i <= endValue; i++) {
+            numbers.push(i);
+        }
+    } else {
+        // Count down
+        for (let i = startValue; i >= endValue; i--) {
+            numbers.push(i);
+        }
     }
 
     return numbers;
@@ -44,3 +52,7 @@ function displayNumbers(numbers) {
     // Push table rows 
     document.getElementById("results").innerHTML = templateRows;
 }
+
+// Set date
+const currentYear = new Date().getFullYear();
+document.getElementById("year").textContent = `©${currentYear}`;

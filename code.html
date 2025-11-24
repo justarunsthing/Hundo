@@ -57,11 +57,11 @@
                                     // Get values from the inputs
                                     let startValue = document.getElementById("start-value").value;
                                     let endValue = document.getElementById("end-value").value;
-                                
+
                                     // Convert string to int
                                     startValue = parseInt(startValue);
                                     endValue = parseInt(endValue);
-                                
+
                                     // Validation
                                     if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
                                         // Generate numbers
@@ -72,22 +72,30 @@
                                         alert("Error: You must enter integers!");
                                     }
                                 }
-                                
+
                                 // Generate values from start to end value
                                 function generateNumbers(startValue, endValue) {
                                     let numbers = [];
-                                
-                                    for (let i = startValue; i <= endValue; i++){
-                                        numbers.push(i);
+
+                                    if (startValue <= endValue) {
+                                        // Count up
+                                        for (let i = startValue; i <= endValue; i++) {
+                                            numbers.push(i);
+                                        }
+                                    } else {
+                                        // Count down
+                                        for (let i = startValue; i >= endValue; i--) {
+                                            numbers.push(i);
+                                        }
                                     }
-                                
+
                                     return numbers;
                                 }
-                                
+
                                 // Generate table rows, even numbers in bold
                                 function displayNumbers(numbers) {
                                     let templateRows = "";
-                                
+
                                     numbers.forEach(element => {
                                         if (element % 2 == 0) {
                                             templateRows += `<tr><td><strong>${element}</strong></td></tr>`;
@@ -95,7 +103,7 @@
                                             templateRows += `<tr><td>${element}</td></tr>`;
                                         }
                                     });
-                                
+
                                     // Push table rows 
                                     document.getElementById("results").innerHTML = templateRows;
                                 }
@@ -110,7 +118,7 @@
                 <div class="row row-cols-1 row-cols-lg-3 gy-2">
                     <div class="col order-last order-lg-first text-light">
                         <div>
-                            <span class="">&copy;2025</span> Arun Pun | justarunsthing@outlook.com
+                            <span id="year">&copy;</span> Arun Pun | justarunsthing@outlook.com
                         </div>
                     </div>
                     <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
@@ -142,6 +150,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
         <script src="/js/prism.js"></script>
+        <script src="js/site.js"></script>
         <script>
             Prism.plugins.NormalizeWhitespace.setDefaults({
                 'remove-trailing': true,
