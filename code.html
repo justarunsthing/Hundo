@@ -94,17 +94,24 @@
 
                                 // Generate table rows, even numbers in bold
                                 function displayNumbers(numbers) {
+                                    const columnsPerRow = 10; // Number of columns per row
                                     let templateRows = "";
 
-                                    numbers.forEach(element => {
-                                        if (element % 2 == 0) {
-                                            templateRows += `<tr><td><strong>${element}</strong></td></tr>`;
-                                        } else {
-                                            templateRows += `<tr><td>${element}</td></tr>`;
-                                        }
-                                    });
+                                    for (let i = 0; i &lt; numbers.length; i += columnsPerRow) {
+                                        templateRows += "&lt;tr&gt;"; // start a row
 
-                                    // Push table rows 
+                                        for (let j = 0; j &lt; columnsPerRow; j++) {
+                                            const element = numbers[i + j];
+                                            if (element === undefined) break; // stop if no more numbers
+
+                                            let cellContent = (element % 2 === 0) ? "&lt;strong&gt;" + element + "&lt;/strong&gt;" : element;
+
+                                            templateRows += "&lt;td&gt;" + cellContent + "&lt;/td&gt;"; // table cell
+                                        }
+
+                                        templateRows += "&lt;/tr&gt;"; // close the row
+                                    }
+
                                     document.getElementById("results").innerHTML = templateRows;
                                 }
                             </code>

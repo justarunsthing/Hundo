@@ -39,17 +39,25 @@ function generateNumbers(startValue, endValue) {
 
 // Generate table rows, even numbers in bold
 function displayNumbers(numbers) {
+    const columnsPerRow = 10; // Number of columns per row
     let templateRows = "";
 
-    numbers.forEach(element => {
-        if (element % 2 == 0) {
-            templateRows += `<tr><td><strong>${element}</strong></td></tr>`;
-        } else {
-            templateRows += `<tr><td>${element}</td></tr>`;
-        }
-    });
+    for (let i = 0; i < numbers.length; i += columnsPerRow) {
+        templateRows += "<tr>"; // start a new row
 
-    // Push table rows 
+        for (let j = 0; j < columnsPerRow; j++) {
+            const element = numbers[i + j];
+            if (element === undefined) break; // stop if no more numbers
+
+            // Bold even numbers
+            let cellContent = (element % 2 === 0) ? `<strong>${element}</strong>` : element;
+
+            templateRows += `<td>${cellContent}</td>`; // create a table cell
+        }
+
+        templateRows += "</tr>"; // close the row
+    }
+
     document.getElementById("results").innerHTML = templateRows;
 }
 
