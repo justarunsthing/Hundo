@@ -10,7 +10,7 @@
 }
 
 .action {
-    background-color: #36827F;
+    background-color: var(--secondary-color);
 }
 
 .action:hover {
